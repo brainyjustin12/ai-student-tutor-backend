@@ -6,7 +6,7 @@ const Quiz = require("./models/Quiz");
 const ChatHistory = require("./models/ChatHistory");
 
 async function seed() {
-  await mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://brainyjustinhabakubaho_db_user:aBQJBXjuqvDWTRJY@cluster0.zpwme21.mongodb.net/ai-student-tutor?appName=Cluster0");
+  await mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://brainyjustinhabakubaho_db_user:Tutor12345@cluster0.zpwme21.mongodb.net/ai-student-tutor?appName=Cluster0");
   console.log("Connected to MongoDB");
 
   await User.deleteMany({});

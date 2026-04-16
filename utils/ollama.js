@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const OLLAMA_URL = process.env.OLLAMA_URL || "http://localhost:11434";
+const OLLAMA_URL = (process.env.OLLAMA_URL || "https://radiopaque-unpreached-tawana.ngrok-free.dev").trim();
 const MODEL = process.env.OLLAMA_MODEL || "llama3";
 
 async function callOllama(prompt, systemPrompt = "") {

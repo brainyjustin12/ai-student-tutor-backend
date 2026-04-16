@@ -5,11 +5,23 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
-app.use(cors());
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+].filter(Boolean);
+
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(null, false);
+  },
+  credentials: true,
+}));
 app.use(express.json({ limit: "50mb" }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://brainyjustinhabakubaho_db_user:aBQJBXjuqvDWTRJY@cluster0.zpwme21.mongodb.net/ai-student-tutor?appName=Cluster0")
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://brainyjustinhabakubaho_db_user:Tutor12345@cluster0.zpwme21.mongodb.net/ai-student-tutor?appName=Cluster0")
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB error:", err));
 
